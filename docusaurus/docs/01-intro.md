@@ -19,7 +19,7 @@ have to fill in lengthy forms to be able to get access to their sandboxes.
 
 ## Getting Started
 
-Get started by downloading the [Postman Collection](pathname://./assets/mockpay.postman_collection.json).
+Get started by downloading the [Postman Collection](https://raw.githubusercontent.com/Goutam192002/mockpay-js-checkout/master/docusaurus/docs/assets/mockpay.postman_collection.json).
 
 The postman collection provides APIs for creating user, generating API Keys and retreiving transactions.
 

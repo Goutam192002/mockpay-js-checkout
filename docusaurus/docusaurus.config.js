@@ -2,13 +2,13 @@
 module.exports = {
   title: 'Mockpay - Mock Payment Gateway for developers',
   tagline: 'We dont ask for your email',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://mockpay.goutambseervi.tech',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'Goutam192002', // Usually your GitHub org/user name.
-  projectName: 'mockpay', // Usually your repo name.
+  projectName: 'mockpay-js-checkout', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'Mockpay',

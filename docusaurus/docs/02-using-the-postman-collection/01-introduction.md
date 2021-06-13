@@ -5,7 +5,7 @@ id: intro
 # Introduction
 
 This postman collection is like your Stripe dashboard. Except you are going to make requests instead of browsing UI.
-You can download the collection [here](pathname://./assets/mockpay.postman_collection.json), if you have not already.
+You can download the collection [here](https://raw.githubusercontent.com/Goutam192002/mockpay-js-checkout/master/docusaurus/docs/assets/mockpay.postman_collection.json), if you have not already.
 
 ### What does this collection include?
 
