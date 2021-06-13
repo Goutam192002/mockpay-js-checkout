@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Paying USD 5</h2>
+        <form id="form">
+            <input type="text" name="name" id="name-input" placeholder="Enter your name" required />
+            <input name="email" id="email-address" type="email" required placeholder="Enter your email" />
+            <span class="flex-fill"></span>
+            <button type="submit" id="pay-button">Pay</button>
+        </form>
+    </div>
+    <script src="../checkout.js"></script>
+    <script>
+        document.getElementById('form').onsubmit = (e) => {
+            e.preventDefault();
+            const form = document.getElementById('form');
+            if (form.checkValidity()) {
+                var mockpay = new MockPay({
+                    onFailure: (data) => {
+                        alert('Transaction Failed');
+                    },
+                    onSuccess: (data) => {
+                        alert('Transaction Success');
+                    },
+                    keyId: 'mockpay_jUOwXX1cIh80',
+                    amount: 5,
+                    customer: {
+                        name: form.children[0].value,
+                        email: form.children[1].value,
+                    }
+                });
+                mockpay.open();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "d2e5230b-cfc4-4f00-9dfa-b03b50874172",
+		"name": "Mockpay",
+		"description": "Mockpay Rest API Documentation.\n\nAPIs included.\n\n1. Create User\n2. Authenticate User\n3. Create Token\n4. View user profile\n5. Check transactions history",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "user_profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/me",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						},
+						"description": "API To get user profile. (Login Required)"
+					},
+					"response": []
+				}
+			],
+			"description": "Includes APIs related to creating user.\n\n1. Create User\n2. Authenticate User\n3. User Profile\n4. Generate Token"
+		},
+		{
+			"name": "trasnsactions",
+			"item": [
+				{
+					"name": "transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transactions/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transactions",
+								""
+							]
+						},
+						"description": "Get all transactions. (Login Required)"
+					},
+					"response": []
+				}
+			],
+			"description": "Provides transaction APIs.\n\n1. View past transactions\n2. View transaction by ID"
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"password\",\n    \"confirm_password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						},
+						"description": "Create user. This is a basic username-password form to generate a user in the backend. All the token and transactions will be linked to this user"
+					},
+					"response": []
+				},
+				{
+					"name": "token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/token/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"token",
+								""
+							]
+						},
+						"description": "API for generating auth token"
+					},
+					"response": []
+				},
+				{
+					"name": "refresh_token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/token/refresh/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"token",
+								"refresh",
+								""
+							]
+						},
+						"description": "API To generate refresh token"
+					},
+					"response": []
+				}
+			],
+			"description": "Contains APIs required for signup/login and refreshing token"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "https://api-mockpay.goutambseervi.tech"
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		},
+		{
+			"key": "refresh_token",
+			"value": ""
+		},
+		{
+			"key": "merchant_id",
+			"value": ""
+		}
+	]
+}
