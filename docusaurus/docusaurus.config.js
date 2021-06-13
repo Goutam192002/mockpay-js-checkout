@@ -24,7 +24,7 @@ module.exports = {
           label: 'Documentation',
         },
         {
-          href: 'https://github.com/Goutam192002/mockpay',
+          href: 'https://github.com/Goutam192002/mockpay-js-checkout',
           label: 'GitHub',
           position: 'right',
         },
