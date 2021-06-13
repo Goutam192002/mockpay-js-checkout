@@ -36,7 +36,140 @@
 						},
 						"description": "API To get user profile. (Login Required)"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "user_profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/users/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Jun 2021 08:01:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"testuser\",\n    \"merchant_id\": \"merchant_nAR87qRUYKmxgsyOVF\",\n    \"balance\": 0\n}"
+						},
+						{
+							"name": "user_profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/users/me",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Jun 2021 08:01:18 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"testuser\",\n    \"merchant_id\": \"merchant_nAR87qRUYKmxgsyOVF\",\n    \"balance\": 0\n}"
+						}
+					]
 				}
 			],
 			"description": "Includes APIs related to creating user.\n\n1. Create User\n2. Authenticate User\n3. User Profile\n4. Generate Token"
@@ -105,7 +238,77 @@
 						},
 						"description": "Create user. This is a basic username-password form to generate a user in the backend. All the token and transactions will be linked to this user"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"yourownusername\",\n    \"password\": \"yourownpassword\",\n    \"confirm_password\": \"yourownpassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Jun 2021 07:24:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"yourownusername\",\n    \"merchant_id\": \"merchant_yIkkai8omU9wMt13qq\",\n    \"balance\": 0\n}"
+						}
+					]
 				},
 				{
 					"name": "token",
@@ -133,7 +336,77 @@
 						},
 						"description": "API for generating auth token"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth-token/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth-token",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Jun 2021 08:16:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "438"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyMzY1ODU3NCwianRpIjoiNTgyOTg2ZWMwODkzNGU3NWIzNWNmMjkxNDNhNjc3YTEiLCJ1c2VyX2lkIjoyfQ.6nYPbB76QvYc_4p7OeQY_ANMq2Qz7E_XRr_JwJufm4Q\",\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNTcyNDc0LCJqdGkiOiIwNGNlNWYyNjA4YjA0N2NhOWY1MjczMDVhZWJkYzdmOSIsInVzZXJfaWQiOjJ9.nkVIQsc2A4-nhHDr8CCQWQNO8C9Ap1L3-MtxiPPUYVk\"\n}"
+						}
+					]
 				},
 				{
 					"name": "refresh_token",
@@ -150,22 +423,195 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/token/refresh/",
+							"raw": "{{host}}/auth-token/refresh/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"token",
+								"auth-token",
 								"refresh",
 								""
 							]
 						},
 						"description": "API To generate refresh token"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "refresh_token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh\": \"{{refresh_token}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/auth-token/refresh/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"auth-token",
+										"refresh",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Jun 2021 07:59:47 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNTcxNDg3LCJqdGkiOiJiOGE1MGU1YWUxZGU0YTQxYjM1MmRmNzMwZTcyZjA3OSIsInVzZXJfaWQiOjJ9.bLyBN62b8l-AQV_FZkAyltHTjVHgk9gKajcD5F2VgCw\"\n}"
+						}
+					]
 				}
 			],
 			"description": "Contains APIs required for signup/login and refreshing token"
+		},
+		{
+			"name": "api-token",
+			"item": [
+				{
+					"name": "api-token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api-token/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api-token",
+								""
+							]
+						},
+						"description": "Generates a key_id and key_secret which is used when using checkout"
+					},
+					"response": [
+						{
+							"name": "api-token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{auth-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api-token/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api-token",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Jun 2021 08:00:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"key_id\": \"mockpay_DJA0A82d9Owz\",\n    \"key_secret\": \"RVdrTUaw9fzQpfFRImI4uapENPWWUTi5\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Generate API Key ID and key Secret for your payment integrations"
 		}
 	],
 	"event": [
