@@ -17,5 +17,15 @@ Authorization: Bearer xxxxxxxxx
 
 Response:
 ```json
-[]
+[
+  {
+    "txn_id": "txn_xxxxxxxx",
+    "mockpay_signature": "a_random_string",
+    "amount": 500,
+    "api_key": "mockpay_xxxxx",
+    "customer_name": "your_customer_name",
+    "customer_email": "your_customer_email",
+    "status": "success" // or "failure"
+  }
+]
 ```

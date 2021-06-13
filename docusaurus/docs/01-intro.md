@@ -25,7 +25,7 @@ The postman collection provides APIs for creating user, generating API Keys and 
 
 To integrate checkout library add the following code to your body.
 ```javascript
-<script src="https://github.com/Goutam192002/mockpay-js-checkout/master/checkout.js"></script>
+<script src="https://raw.githubusercontent.com/Goutam192002/mockpay-js-checkout/master/checkout.js"></script>
 ```
 
 ## Accepting payments
