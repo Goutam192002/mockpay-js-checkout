@@ -19,13 +19,13 @@ have to fill in lengthy forms to be able to get access to their sandboxes.
 
 ## Getting Started
 
-Get started by downloading the [Postman Collection](https://raw.githubusercontent.com/Goutam192002/mockpay-js-checkout/master/docusaurus/docs/assets/mockpay.postman_collection.json).
+Get started by downloading the [Postman Collection](https://cdn-mockpay.goutambseervi.tech/mockpay.postman_collection.json).
 
 The postman collection provides APIs for creating user, generating API Keys and retreiving transactions.
 
 To integrate checkout library add the following code to your body.
 ```javascript
-<script src="https://raw.githubusercontent.com/Goutam192002/mockpay-js-checkout/master/checkout.js"></script>
+<script src="https://cdn-mockpay.goutambseervi.tech/checkout.js"></script>
 ```
 
 ## Accepting payments

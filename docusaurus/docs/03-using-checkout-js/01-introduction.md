@@ -7,7 +7,7 @@ id: intro
 ### How to include checkout.js into you app?
 Add this line to your html body
 ```html
-<script src="https://raw.githubusercontent.com/Goutam192002/mockpay-js-checkout/master/checkout.js"></script>
+<script src="https://cdn-mockpay.goutambseervi.tech/checkout.js"></script>
 ```
 
 ### Using checkout

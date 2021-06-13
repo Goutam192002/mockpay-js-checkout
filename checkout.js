@@ -15,7 +15,7 @@
             const head = document.getElementsByTagName('head')[0];
             const stylesheet = document.createElement('link');
             stylesheet.rel = 'stylesheet';
-            stylesheet.href = 'https://raw.githubusercontent.com/Goutam192002/mockpay-js-checkout/master/checkout.css';
+            stylesheet.href = 'https://cdn-mockpay.goutambseervi.tech/checkout.css';
             stylesheet.id = 'mockpay_checkout_stylesheet';
             head.appendChild(stylesheet);
         }
@@ -176,7 +176,7 @@
             const loadingOverlay = document.createElement('div');
             loadingOverlay.className = 'loading hide';
             const loadingGif = document.createElement('img');
-            loadingGif.src = "https://raw.githubusercontent.com/Goutam192002/mockpay-js-checkout/master/loading_animation.gif";
+            loadingGif.src = "https://cdn-mockpay.goutambseervi.tech/loading_animation.gif";
             loadingGif.className = "loading-animation";
             const loadingText = document.createElement('p');
             loadingText.style.color = 'black';
