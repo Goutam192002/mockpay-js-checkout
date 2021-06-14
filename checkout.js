@@ -7,18 +7,18 @@
         this.customer = customer || {};
     }
 
+    const styleSheetExists = !!document.getElementById('mockpay_checkout_stylesheet');
+    if (!styleSheetExists) {
+        const head = document.getElementsByTagName('head')[0];
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = 'https://cdn-mockpay.goutambseervi.tech/checkout.css';
+        stylesheet.id = 'mockpay_checkout_stylesheet';
+        head.appendChild(stylesheet);
+    }
+
     MockPay.prototype.open = function () {
         const body = document.getElementsByTagName('body')[0];
-
-        const styleSheetExists = !!document.getElementById('mockpay_checkout_stylesheet');
-        if (!styleSheetExists) {
-            const head = document.getElementsByTagName('head')[0];
-            const stylesheet = document.createElement('link');
-            stylesheet.rel = 'stylesheet';
-            stylesheet.href = 'https://cdn-mockpay.goutambseervi.tech/checkout.css';
-            stylesheet.id = 'mockpay_checkout_stylesheet';
-            head.appendChild(stylesheet);
-        }
 
         const overlayExists = !!document.getElementById('mockpay_root');
         if (!overlayExists) {
@@ -30,7 +30,6 @@
             paymentCardWrapper.className = 'payment-card-wrapper';
             const paymentCard = document.createElement('div');
             paymentCard.className = 'payment-card';
-            paymentCard.style.backgroundColor = this.themeColor;
 
             const infoDiv = document.createElement('div');
             infoDiv.className = 'payment-card-header';
@@ -42,16 +41,17 @@
             const closeButton = document.createElement('a');
             closeButton.innerText = 'X';
             closeButton.onclick = () => {
-                overlay.style.display = 'none';
+                document.getElementById('mockpay_root').remove();
             }
 
             const cardNumberInput = document.createElement("input");
             cardNumberInput.placeholder = '1234 5678 9101 1213';
             cardNumberInput.autocompletetype = 'cc-number';
             cardNumberInput.onkeydown = ev => {
-                const shouldEscape = ev.key.length === 1 && /[^0-9]/.test(ev.key);
-                const isNumber = ev.key.length === 1 && /\d/.test(ev.key)
-                const isDelete = ['backspace', 'delete'].includes(ev.key.toLowerCase());
+                const key = ev.key || String.fromCharCode(ev.which);
+                const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
+                const isNumber = key.length === 1 && /\d/.test(key)
+                const isDelete = ['backspace', 'delete'].includes(key.toLowerCase());
 
                 if (isDelete) {
                     const lastSpaceIndex = cardNumberInput.value.lastIndexOf(' ');
@@ -65,7 +65,7 @@
                     return;
                 } else if (isNumber) {
                     ev.preventDefault();
-                    cardNumberInput.value = cardNumberInput.value.length <= 18 ? cardNumberInput.value.concat(ev.key) : cardNumberInput.value;
+                    cardNumberInput.value = cardNumberInput.value.length <= 18 ? cardNumberInput.value.concat(key) : cardNumberInput.value;
                     const nextSpaceIndex = cardNumberInput.value.lastIndexOf(' ') + 5;
                     if (cardNumberInput.value.length === nextSpaceIndex && nextSpaceIndex < 19) {
                         cardNumberInput.value = cardNumberInput.value.concat(' ');
@@ -82,9 +82,10 @@
             expiryInput.placeholder = '02/19';
             expiryInput.className = 'flex-shrink'
             expiryInput.onkeydown = ev => {
-                const shouldEscape = ev.key.length === 1 && /[^0-9]/.test(ev.key);
-                const isNumber = ev.key.length === 1 && /\d/.test(ev.key)
-                const isDelete = ['backspace', 'delete'].includes(ev.key.toLowerCase());
+                let key = ev.key || String.fromCharCode(ev.which);
+                const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
+                const isNumber = key.length === 1 && /\d/.test(key)
+                const isDelete = ['backspace', 'delete'].includes(key.toLowerCase());
 
                 if (isDelete) {
                     let factor = 0;
@@ -97,7 +98,10 @@
                     return;
                 } else if (isNumber) {
                     ev.preventDefault();
-                    expiryInput.value = expiryInput.value.length <= 4 ? expiryInput.value.concat(ev.key) : expiryInput.value;
+                    if (parseInt(key) > 1 && expiryInput.value.length < 3) {
+                        key = `0${key}`
+                    }
+                    expiryInput.value = expiryInput.value.length <= 4 ? expiryInput.value.concat(key) : expiryInput.value;
                     if (expiryInput.value.length === 2) {
                         expiryInput.value = expiryInput.value.concat('/');
                     }
@@ -111,9 +115,10 @@
             cvvInput.placeholder = '000';
             cvvInput.className = 'flex-shrink'
             cvvInput.onkeydown = ev => {
-                const shouldEscape = ev.key.length === 1 && /[^0-9]/.test(ev.key);
-                const isNumber = ev.key.length === 1 && /\d/.test(ev.key)
-                const isDelete = ['backspace', 'delete'].includes(ev.key.toLowerCase());
+                const key = ev.key || String.fromCharCode(ev.which);
+                const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
+                const isNumber = key.length === 1 && /\d/.test(key)
+                const isDelete = ['backspace', 'delete'].includes(key.toLowerCase());
 
                 if (isDelete) {
                     cvvInput.value = cvvInput.value.slice(0, cvvInput.value.length);
@@ -122,7 +127,7 @@
                     return;
                 } else if (isNumber) {
                     ev.preventDefault();
-                    cvvInput.value = cvvInput.value.length <= 2 ? cvvInput.value.concat(ev.key) : cvvInput.value;
+                    cvvInput.value = cvvInput.value.length <= 2 ? cvvInput.value.concat(key) : cvvInput.value;
                     if (cvvInput.value.length === 3) {
                         nameInput.focus();
                     }
@@ -138,6 +143,10 @@
             payButton.innerText = 'Pay Now';
             payButton.className = 'pay-button';
             payButton.onclick = async () => {
+                const cardNumber = cardNumberInput.value.replace(/\s/g, '');
+                if (cardNumber.length < 16 || expiryInput.value.length < 5 || cvvInput.value.length < 3 || nameInput.value.length === 0) {
+                    return;
+                }
                 loadingOverlay.classList.remove('hide');
                 try {
                     const txn = await request('https://api-mockpay.goutambseervi.tech/transactions/initiate/', "POST", {
@@ -155,7 +164,6 @@
                 } catch (e) {
                     this.onFailure(e);
                 } finally {
-                    loadingOverlay.classList.add('hide');
                     document.getElementById('mockpay_root').remove();
                 }
             }
