@@ -55,7 +55,7 @@
             const cardNumberInput = document.createElement("input");
             cardNumberInput.placeholder = '1234 5678 9101 1213';
             cardNumberInput.autocompletetype = 'cc-number';
-            cardNumberInput.onkeydown = ev => {
+            cardNumberInput.onkeypress = ev => {
                 const key = ev.key || String.fromCharCode(ev.which);
                 const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
                 const isNumber = key.length === 1 && /\d/.test(key)
@@ -94,7 +94,7 @@
             const expiryInput = document.createElement("input");
             expiryInput.placeholder = '02/19';
             expiryInput.className = 'flex-shrink'
-            expiryInput.onkeydown = ev => {
+            expiryInput.onkeypress = ev => {
                 let key = ev.key || String.fromCharCode(ev.which);
                 const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
                 const isNumber = key.length === 1 && /\d/.test(key)
@@ -132,7 +132,7 @@
             const cvvInput = document.createElement("input");
             cvvInput.placeholder = '000';
             cvvInput.className = 'flex-shrink'
-            cvvInput.onkeydown = ev => {
+            cvvInput.onkeypress = ev => {
                 const key = ev.key || String.fromCharCode(ev.which);
                 const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
                 const isNumber = key.length === 1 && /\d/.test(key)
@@ -162,7 +162,7 @@
 
             const nameInput = document.createElement("input");
             nameInput.placeholder = 'Name on card';
-            nameInput.onkeydown = () => {
+            nameInput.onkeypress = () => {
                 if(nameInput.value.length === 0) {
                     setValidity(nameInput, false);
                     return;
