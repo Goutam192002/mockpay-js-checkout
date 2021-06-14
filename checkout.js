@@ -56,7 +56,7 @@
             cardNumberInput.placeholder = '1234 5678 9101 1213';
             cardNumberInput.autocompletetype = 'cc-number';
             cardNumberInput.onkeypress = ev => {
-                const key = ev.key || String.fromCharCode(ev.which);
+                const key = String.fromCharCode(ev.which);
                 const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
                 const isNumber = key.length === 1 && /\d/.test(key)
                 const isDelete = ['backspace', 'delete'].includes(key.toLowerCase());
@@ -95,8 +95,7 @@
             expiryInput.placeholder = '02/19';
             expiryInput.className = 'flex-shrink'
             expiryInput.onkeypress = ev => {
-                console.log(ev);
-                let key = ev.key || String.fromCharCode(ev.which);
+                let key = String.fromCharCode(ev.which);
                 const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
                 const isNumber = key.length === 1 && /\d/.test(key)
                 const isDelete = ['backspace', 'delete'].includes(key.toLowerCase());
@@ -134,7 +133,7 @@
             cvvInput.placeholder = '000';
             cvvInput.className = 'flex-shrink'
             cvvInput.onkeypress = ev => {
-                const key = ev.key || String.fromCharCode(ev.which);
+                const key = String.fromCharCode(ev.which);
                 const shouldEscape = key.length === 1 && /[^0-9]/.test(key);
                 const isNumber = key.length === 1 && /\d/.test(key)
                 const isDelete = ['backspace', 'delete'].includes(key.toLowerCase());
