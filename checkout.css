@@ -114,3 +114,7 @@ input {
 .hide {
     display: none;
 }
+
+.error {
+    border: 1px solid red;
+}

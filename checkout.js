@@ -17,6 +17,14 @@
         head.appendChild(stylesheet);
     }
 
+    function setValidity(node, isValid) {
+        if (isValid) {
+            node.classList.remove('error');
+            return;
+        }
+        node.classList.add('error');
+    }
+
     MockPay.prototype.open = function () {
         const body = document.getElementsByTagName('body')[0];
 
@@ -74,6 +82,11 @@
                         expiryInput.focus();
                     }
                 }
+                if(cardNumberInput.value.length < 19) {
+                    setValidity(cardNumberInput, false);
+                    return;
+                }
+                setValidity(cardNumberInput, true);
             }
 
             const expiryCvvContainer = document.createElement("div");
@@ -98,7 +111,7 @@
                     return;
                 } else if (isNumber) {
                     ev.preventDefault();
-                    if (parseInt(key) > 1 && expiryInput.value.length < 3) {
+                    if (parseInt(key) > 1 && expiryInput.value.length === 0) {
                         key = `0${key}`
                     }
                     expiryInput.value = expiryInput.value.length <= 4 ? expiryInput.value.concat(key) : expiryInput.value;
@@ -109,6 +122,11 @@
                         cvvInput.focus();
                     }
                 }
+                if(expiryInput.value.length < 5) {
+                    setValidity(expiryInput, false);
+                    return;
+                }
+                setValidity(expiryInput, true);
             }
 
             const cvvInput = document.createElement("input");
@@ -132,6 +150,11 @@
                         nameInput.focus();
                     }
                 }
+                if(cvvInput.value.length < 3) {
+                    setValidity(cvvInput, false);
+                    return;
+                }
+                setValidity(cvvInput, true);
             };
 
             expiryCvvContainer.appendChild(expiryInput);
@@ -139,6 +162,13 @@
 
             const nameInput = document.createElement("input");
             nameInput.placeholder = 'Name on card';
+            nameInput.onkeydown = () => {
+                if(nameInput.value.length === 0) {
+                    setValidity(nameInput, false);
+                    return;
+                }
+                setValidity(nameInput, true);
+            }
             const payButton = document.createElement("button")
             payButton.innerText = 'Pay Now';
             payButton.className = 'pay-button';
