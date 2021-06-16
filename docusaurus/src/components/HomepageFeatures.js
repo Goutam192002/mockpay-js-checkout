@@ -28,7 +28,7 @@ const FeatureList = [
     description: (
       <>
         As developers, we understand you might wish to create projects and include fake payments in your website.
-          We thought making of making it easier and accessible...through simple documentation and no BS!
+          We thought of making it easier and accessible...through simple documentation and no BS!
       </>
     ),
   },
