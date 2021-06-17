@@ -9,15 +9,20 @@
 </head>
 <body>
     <div class="container">
+        <div class="image-container">
+            <img src="purchase.svg" class="purchase-image">
+        </div>
         <h2>Paying USD 5</h2>
         <form id="form">
+            <label for="name-input">Name</label>
             <input type="text" name="name" id="name-input" placeholder="Enter your name" required />
+            <label for="email-address">Email</label>
             <input name="email" id="email-address" type="email" required placeholder="Enter your email" />
             <span class="flex-fill"></span>
             <button type="submit" id="pay-button">Pay</button>
         </form>
     </div>
-    <script type="text/javascript" src="https://cdn-mockpay.goutambseervi.tech/checkout.js"></script>
+    <script type="text/javascript" src="../checkout.js"></script>
     <script>
         document.getElementById('form').onsubmit = (e) => {
             e.preventDefault();
