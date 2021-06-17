@@ -175,7 +175,7 @@
 			"description": "Includes APIs related to creating user.\n\n1. Create User\n2. Authenticate User\n3. User Profile\n4. Generate Token"
 		},
 		{
-			"name": "trasnsactions",
+			"name": "transactions",
 			"item": [
 				{
 					"name": "transactions",
