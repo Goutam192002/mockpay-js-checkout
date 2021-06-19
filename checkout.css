@@ -91,14 +91,8 @@ input {
 
 .pay-button {
     appearance: none;
-    background-color: #EC4899;
-    color: white;
     border: none;
     padding: 16px 8px;
-}
-
-.pay-button:hover {
-    background-color: #F9A8D4;
 }
 
 :focus {

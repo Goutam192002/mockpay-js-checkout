@@ -25,10 +25,16 @@ var mockpay = new MockPay({
     customer: {
         name: form.children[0].value, // Customer name (optional)
         email: form.children[1].value, // Customer email (optional)
-    }
+    },
+    themeColor: '#EC4899f' // optional, to customize the theme color
 });
 ```
 
+### Using custom theme in mockpay dialog
+The property `themeColor` accepts a hex string and will set this as the primary color in the checkout page.
+
+
+### Show payment dialog
 Add this line of code when you want to show the checkout dialog.
 **Example:** When user clicks on checkout button.
 ```javascript

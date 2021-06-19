@@ -6,6 +6,6 @@ Checkout the documentation at: https://mockpay.goutambseervi.tech
 
 ### Roadmap Ahead:
 - [ ] Add more currency support
-- [ ] Customize checkout experience.
+- [x] Customize checkout experience.
 
 Feel free to add PRs and contribute.
