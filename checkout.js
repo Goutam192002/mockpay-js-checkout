@@ -1,10 +1,11 @@
 (function () {
-    function MockPay({amount, keyId, onSuccess, onFailure, customer}) {
+    function MockPay({amount, keyId, onSuccess, onFailure, customer, themeColor}) {
         this.amount = amount;
         this.keyId = keyId;
         this.onSuccess = onSuccess;
         this.onFailure = onFailure;
         this.customer = customer || {};
+        this.themeColor = themeColor || "#EC4899";
     }
 
     const styleSheetExists = !!document.getElementById('mockpay_checkout_stylesheet');
@@ -172,6 +173,21 @@
             const payButton = document.createElement("button")
             payButton.innerText = 'Pay Now';
             payButton.className = 'pay-button';
+            payButton.style.backgroundColor = this.themeColor;
+
+            // convert rgb values from hex to decimal
+            const r = parseInt(this.themeColor.slice(1, 3), 16);
+            const g = parseInt(this.themeColor.slice(3, 5), 16);
+            const b = parseInt(this.themeColor.slice(5, 8), 16);
+
+            // calculate brightness of the color
+            const luminosity = (r * 0.299 + g * 0.587 + b * 0.114);
+
+            if (luminosity > 186) {
+                payButton.style.color = 'black';
+            } else {
+                payButton.style.color = 'white';
+            }
             payButton.onclick = async () => {
                 const cardNumber = cardNumberInput.value.replace(/\s/g, '');
                 if (cardNumber.length < 16 || expiryInput.value.length < 5 || cvvInput.value.length < 3 || nameInput.value.length === 0) {
