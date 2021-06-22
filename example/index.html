@@ -22,7 +22,7 @@
             <button type="submit" id="pay-button">Pay</button>
         </form>
     </div>
-    <script type="text/javascript" src="../checkout.js"></script>
+    <script type="text/javascript" src="https://cdn-mockpay.goutambseervi.tech/checkout.js"></script>
     <script>
         document.getElementById('form').onsubmit = (e) => {
             e.preventDefault();
@@ -38,8 +38,8 @@
                     keyId: 'mockpay_o35lKNXgA3s5',
                     amount: 5,
                     customer: {
-                        name: form.children[0].value,
-                        email: form.children[1].value,
+                        name: form.children[1].value,
+                        email: form.children[3].value,
                     },
                     themeColor: '#EC4899f'
                 });
